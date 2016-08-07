@@ -2,7 +2,7 @@
 ## Installation
 
 ```bash
-pip install git+http://muteklab.com:9000/git/root/python-mstr.git
+pip install git+http://muteklab.com:9000/root/python-mstr.git
 ```
 
 ```bash
@@ -41,5 +41,5 @@ mstr('string').get_path_split(0)
 ## Repository
 
 ```bash
-git clone http://muteklab.com:9000/git/root/python-mstr.git
+git clone http://muteklab.com:9000/root/python-mstr.git
 ```
