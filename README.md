@@ -15,7 +15,7 @@ pip uninstall mstr
 from mstr import mstr
 mstr('string').get_pattern_index('pattern')
 mstr('string').get_pattern_index_from_to('pattern_from', 'pattern_to')
-mstr('string').get_pattern_removed('pattern')
+mstr('string').remove_pattern('pattern')
 mstr('string').tokenize(r'[a|b]', remain=True)
 mstr('string').msplit(r'[a|b]')
 mstr('string').mstrip(r'[a|b]')

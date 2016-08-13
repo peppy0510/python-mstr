@@ -9,6 +9,7 @@ email: peppy0510@hotmail.com
 
 import os
 import re
+import sys
 import hashlib
 
 
@@ -170,7 +171,7 @@ class mstr(str):
                 index += [((s, e), v)]
         return index
 
-    def get_pattern_removed(self, pattern):
+    def remove_pattern(self, pattern):
         value = self
         index = self.get_pattern_index(pattern)
         for s, e in index[::-1]:
@@ -196,23 +197,20 @@ class mstr(str):
 
     def get_hash(self, algorithm):
         h = hashlib.new(algorithm)
-        h.update(self.encode('utf-8'))
+        if sys.version.startswith('2'):
+            h.update(self)
+        else:
+            h.update(self.encode('utf-8'))
         return mstr(h.hexdigest())
 
     def get_md5(self):
-        h = hashlib.md5()
-        h.update(self.encode('utf-8'))
-        return mstr(h.hexdigest())
+        return self.get_hash('md5')
 
     def get_sha256(self):
-        h = hashlib.sha256()
-        h.update(self.encode('utf-8'))
-        return mstr(h.hexdigest())
+        return self.get_hash('sha256')
 
     def get_sha512(self):
-        h = hashlib.sha512()
-        h.update(self.encode('utf-8'))
-        return mstr(h.hexdigest())
+        return self.get_hash('sha512')
 
     def guess_datetime(self):
         from datetime import datetime
@@ -467,8 +465,8 @@ def __test__():
     print('mstr().get_pattern_index_from_to()'.ljust(pad),
           value.get_pattern_index_from_to('multi', 'uage'))
 
-    print('mstr().get_pattern_removed()'.ljust(pad),
-          value.get_pattern_removed('multi'))
+    print('mstr().remove_pattern()'.ljust(pad),
+          value.remove_pattern('multi'))
 
     print('-' * 120)
 

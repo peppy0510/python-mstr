@@ -15,7 +15,7 @@ except ImportError:
 
 setup(
     name='mstr',
-    version='0.1.0',
+    version='0.1.3',
     packages=['mstr'],
     author='Taehong Kim',
     author_email='peppy0510@hotmail.com',
